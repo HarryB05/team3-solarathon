@@ -5,3 +5,5 @@ __pycache__
 dist/
 build/
 ploomber/wheels
+team3/*
+.vscode/*
