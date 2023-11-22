@@ -22,7 +22,15 @@ class Map(geemap.Map):
             ['B1', 'B2', 'B3', 'B4', 'B5', 'B7']
         )
         states = ee.FeatureCollection("TIGER/2018/States")
+        try:
+            point = ee.Geometry.Point(77.6,28.5)
+            d =  ee.ImageCollection("COPERNICUS/S2").select(["B8", "B4", "B3"]).filterBounds(point)
 
+            sentinel = ee.Image(d.filterDate("2019-01-01","2019-10-01").sort("CLOUD_COVERAGE_ASSESSEMENT").first())
+            
+            self.addLayer(sentinel,{'bands': ["B8", "B4", "B3"], 'min': 0, 'max': 3000},'Sentinel',False,)
+        except:
+            print("Could not generate sentinel")
         # Set visualization parameters.
         vis_params = {
             'min': 0,
