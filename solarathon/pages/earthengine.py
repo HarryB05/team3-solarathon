@@ -41,7 +41,6 @@ class Map(geemap.Map):
 
         # New example trial 
         try:
-
             roi =ee.Geometry.Polygon(
                     [[[59.402645607468386, 36.721247854081604],
                     [59.402645607468386, 6.293426486681035],
